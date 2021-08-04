@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -33,6 +34,7 @@ export default function Header() {
     });
     setTotalCartItems(total);
   }, [cartItems]);
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -41,16 +43,18 @@ export default function Header() {
           <Typography variant="h6" className={classes.title}>
             <Link to="/"> Evaly</Link>
           </Typography>
-          <IconButton
-            variant="contained"
-            color="inherit"
-            className={classes.iconButton}
-          >
-            <Link style={{ display: 'flex', alignItems: 'center' }} to="/cart">
-              <ShoppingCartIcon />
-              <span>{totalCartItems}</span>
-            </Link>
-          </IconButton>
+          <Link to="/cart">
+            <IconButton
+              variant="contained"
+              color="inherit"
+              className={classes.iconButton}
+            >
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <ShoppingCartIcon />
+                <span>{totalCartItems}</span>
+              </div>
+            </IconButton>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>

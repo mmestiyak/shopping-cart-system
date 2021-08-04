@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Button, Container, Grid, Paper, Typography } from '@material-ui/core';
 import CartItem from './CartItem';
 import { Link } from 'react-router-dom';
+import { priceFormatter } from '../utils';
 const Cart = () => {
   const cartItems = useSelector((state) => state.shopping.cart);
   const [totalCartItems, setTotalCartItems] = useState(0);
@@ -31,7 +32,8 @@ const Cart = () => {
             <Paper style={{ padding: '1em 1.5em' }} elevation={3}>
               <Typography variant="h4">Cart Summary</Typography>
               <Typography gutterBottom variant="h6">
-                Total: ({totalCartItems}) Items: ${totalPrice}
+                Total: ({totalCartItems}) Items:{' '}
+                {priceFormatter.format(totalPrice)}
               </Typography>
               <Button variant="outlined" color="primary">
                 Checkout

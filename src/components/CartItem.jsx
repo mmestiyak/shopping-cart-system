@@ -7,17 +7,19 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as actions from '../redux/actions/shoppingActions';
 import { IconButton } from '@material-ui/core';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import { priceFormatter } from '../utils';
 const useStyles = makeStyles({
   root: {
     // maxWidth: 345,
     marginBottom: '3rem',
   },
   media: {
-    width: '12rem',
+    backgroundSize: 'contain',
+    width: '50rem',
     height: 'auto',
   },
 });
@@ -26,7 +28,6 @@ export default function SingleProduct(props) {
   const { id, title, description, price, image, quantity } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
-
   return (
     <Card className={classes.root}>
       <CardActionArea>
@@ -37,7 +38,7 @@ export default function SingleProduct(props) {
               {title}
             </Typography>
             <Typography gutterBottom variant="h5" component="h2">
-              ${price}
+              {priceFormatter.format(price)}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               {description}

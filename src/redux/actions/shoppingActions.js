@@ -24,3 +24,11 @@ export const adjustQuantity = (itemId, adjustedQuantity) => (dispatch) =>
       adjustedQuantity,
     },
   });
+
+export const setProducts = (products) => (dispatch) =>
+  dispatch({
+    type: actionTypes.SET_PRODUCTS,
+    payload: {
+      products,
+    },
+  });

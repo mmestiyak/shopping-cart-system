@@ -11,10 +11,16 @@ import IconButton from '@material-ui/core/IconButton';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import { useDispatch } from 'react-redux';
 import * as actions from '../redux/actions/shoppingActions';
+import { priceFormatter } from '../utils';
 const useStyles = makeStyles({
-  // root: {},
+  root: {
+    height: '100%',
+    paddingTop: 5,
+    backgroundColor: '#fff',
+  },
   media: {
     height: 180,
+    backgroundSize: 'contain',
   },
 });
 
@@ -40,7 +46,7 @@ export default function SingleProduct({
             {title}
           </Typography>
           <Typography gutterBottom variant="h5" component="h2">
-            ${price}
+            {priceFormatter.format(price)}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {description}
